@@ -2,6 +2,7 @@ const express = require('express');
 const { Pool } = require('pg');
 
 const app = express();
+require('dotenv').config();
 const port = process.env.PORT; // Replace with the appropriate port
 
 // PostgreSQL database connection configuration
@@ -34,6 +35,7 @@ app.get('/projects', async (req, res) => {
 
   try {
     const client = await pool.connect();
+    module.exports = pool;
     const result = await client.query(
       `SELECT * FROM Projects WHERE project_id IN (${ids})`
     );
