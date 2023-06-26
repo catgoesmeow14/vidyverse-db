@@ -44,6 +44,10 @@ app.use((req, res, next) => {
 });
 
 // Endpoint to retrieve project data from the Projects table based on IDs
+app.get('/', async (req, res) => {
+  res.status(200).json({ message: 'Connected!' });
+});
+
 app.get('/projects', async (req, res) => {
   const { ids } = req.query;
 
