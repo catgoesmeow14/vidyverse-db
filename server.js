@@ -29,7 +29,7 @@ const pool = new Pool({
   // host: 'ep-shiny-smoke-910148-pooler.us-east-1.postgres.vercel-storage.com',
   // database: 'verceldb',
   // password: 'ipz51yGgIVSB',
-  port: process.env.PORT, // Replace with the appropriate port
+  // port: process.env.PORT, // Replace with the appropriate port
 });
 
 // Enable CORS middleware
