@@ -14,12 +14,21 @@ const port = process.env.PORT; // Replace with the appropriate port
 //   port: 5432, // Replace with the appropriate port
 // });
 
+// const pool = new Pool({
+//   // connectionString: process.env.POSTGRES_URL + '?sslmode=require',
+//   user: process.env.POSTGRES_USER,
+//   host: process.env.POSTGRES_HOST,
+//   database: process.env.POSTGRES_DATABASE,
+//   password: process.env.POSTGRES_PASSWORD,
+//   port: process.env.PORT, // Replace with the appropriate port
+// });
+
 const pool = new Pool({
-  // connectionString: process.env.POSTGRES_URL + '?sslmode=require',
-  user: process.env.POSTGRES_USER,
-  host: process.env.POSTGRES_HOST,
-  database: process.env.POSTGRES_DATABASE,
-  password: process.env.POSTGRES_PASSWORD,
+  connectionString: process.env.POSTGRES_URL + '?sslmode=require',
+  // user: 'default',
+  // host: 'ep-shiny-smoke-910148-pooler.us-east-1.postgres.vercel-storage.com',
+  // database: 'verceldb',
+  // password: 'ipz51yGgIVSB',
   port: process.env.PORT, // Replace with the appropriate port
 });
 
