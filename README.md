@@ -1,7 +1,7 @@
 # vidyverse-db
 
 ## Description
-Welcome to the vidyverse-db repository! This is the backend component of the Vidya's personal blog, Vidy-Verse. It serves as an API that connects to a PostgreSQL database, which has been deployed on Vercel. The primary purpose of this repository is to provide data retrieval functionality through the GET method. You can test it by sending a request to "https://vidyverse-db.vercel.app/projects?ids=1,2,3,4" or by using the local port 3000. In the future, we plan to develop additional methods such as POST, PUT, and DELETE.
+Welcome to the vidyverse-db repository! This is the backend component of Vidya's personal blog, Vidy-Verse. It serves as an API that connects to a PostgreSQL database, which has been deployed on Vercel. The API is built using Express.js framework to handle the routing and requests. The primary purpose of this repository is to provide data retrieval functionality through the GET method. You can test it by sending a request to "https://vidyverse-db.vercel.app/projects?ids=1,2,3,4" or by using the local port 3000. In the future, we plan to develop additional methods such as POST, PUT, and DELETE.
 
 ## Installation and Setup
 To get started with the vidyverse-db repository, please follow the steps below:
