@@ -43,24 +43,24 @@ app.use((req, res, next) => {
   next();
 });
 
-// Endpoint to retrieve project data from the Projects table based on IDs
+// Endpoint to retrieve project data from the Project table based on ID or IDs
 app.get('/', async (req, res) => {
   res.status(200).json({ message: 'Connected!' });
 });
 
-app.get('/projects', async (req, res) => {
+app.get('/project', async (req, res) => {
   const { id } = req.query;
 
   try {
     const client = await pool.connect();
     module.exports = pool;
     const result = await client.query(
-      `SELECT * FROM Projects WHERE project_id IN (${id})`
+      `SELECT * FROM project WHERE project_id IN (${id})`
     );
-    const projects = result.rows;
+    const project = result.rows;
     client.release();
 
-    res.json(projects);
+    res.json(project);
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).json({ error: 'Internal Server Error' });
