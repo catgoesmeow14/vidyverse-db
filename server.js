@@ -49,13 +49,13 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/projects', async (req, res) => {
-  const { ids } = req.query;
+  const { id } = req.query;
 
   try {
     const client = await pool.connect();
     module.exports = pool;
     const result = await client.query(
-      `SELECT * FROM Projects WHERE project_id IN (${ids})`
+      `SELECT * FROM Projects WHERE project_id IN (${id})`
     );
     const projects = result.rows;
     client.release();
