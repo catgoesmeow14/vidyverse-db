@@ -12,7 +12,7 @@ To access project data:
 1. **Remote Access**:
    Issue a GET request to:
    ```
-   https://vidyverse-db.vercel.app/projects?ids=1,2,3,4
+   https://vidyverse-db.vercel.app/project?id=1,2,3,4
    ```
    This retrieves data for projects with IDs 1, 2, 3, and 4.
 
@@ -23,7 +23,7 @@ To access project data:
      ```
    - Access the API at:
      ```
-     http://localhost:3000/projects?ids=1,2,3,4
+     https://vidyverse-db.vercel.app/project?id=1,2,3,4
      ```
 
 ### Upcoming Features: POST, PUT, DELETE
