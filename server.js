@@ -3,36 +3,14 @@ const { Pool } = require('pg');
 
 const app = express();
 require('dotenv').config();
-const port = process.env.PORT; // Replace with the appropriate port
+const port = process.env.PORT; // Port for the web server, set via environment variables
 
 // PostgreSQL database connection configuration
-// const pool = new Pool({
-//   user: 'postgres',
-//   host: 'localhost',
-//   database: 'db_vidyverse',
-//   password: 'lacoco',
-//   port: 5432, // Replace with the appropriate port
-// });
-
-// const pool = new Pool({
-//   // connectionString: process.env.POSTGRES_URL + '?sslmode=require',
-//   user: process.env.POSTGRES_USER,
-//   host: process.env.POSTGRES_HOST,
-//   database: process.env.POSTGRES_DATABASE,
-//   password: process.env.POSTGRES_PASSWORD,
-//   port: process.env.PORT, // Replace with the appropriate port
-// });
-
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL + '?sslmode=require',
-  // user: 'default',
-  // host: 'ep-shiny-smoke-910148-pooler.us-east-1.postgres.vercel-storage.com',
-  // database: 'verceldb',
-  // password: 'ipz51yGgIVSB',
-  // port: process.env.PORT, // Replace with the appropriate port
 });
 
-// Enable CORS middleware
+// CORS middleware setup for handling cross-origin requests
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -43,17 +21,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// Endpoint to retrieve project data from the Project table based on ID or IDs
+// Basic endpoint to check API connectivity
 app.get('/', async (req, res) => {
   res.status(200).json({ message: 'Connected!' });
 });
 
+// GET endpoint to retrieve project data based on ID
 app.get('/project', async (req, res) => {
   const { id } = req.query;
 
   try {
     const client = await pool.connect();
-    module.exports = pool;
     const result = await client.query(
       `SELECT * FROM project WHERE project_id IN (${id})`
     );
@@ -66,6 +44,27 @@ app.get('/project', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+// Placeholder for POST endpoint
+// TODO: Implement POST endpoint to create new project entries
+// This will allow users to add new projects to the database.
+// app.post('/project', async (req, res) => {
+//   // Implementation goes here
+// });
+
+// Placeholder for PUT endpoint
+// TODO: Implement PUT endpoint to update existing project entries
+// This will enable users to modify details of existing projects.
+// app.put('/project/:id', async (req, res) => {
+//   // Implementation goes here
+// });
+
+// Placeholder for DELETE endpoint
+// TODO: Implement DELETE endpoint to remove project entries
+// This will allow users to delete projects from the database.
+// app.delete('/project/:id', async (req, res) => {
+//   // Implementation goes here
+// });
 
 // Start the server
 app.listen(port, () => {
